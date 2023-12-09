@@ -2,6 +2,8 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import productRoutes from '../src/routes/product.routes'
+import userRoutes from '../src/routes/user.routes'
+import authRoutes from '../src/routes/auth.routes'
 
 const app = express()
 const PORT = 3000
@@ -19,6 +21,8 @@ mongoose.connection.on("error", (err) => {
 })
 
 app.use('/products', productRoutes)
+app.use('/users', userRoutes);
+app.use('/auth', authRoutes)
 
 app.listen(PORT, () => {
     console.log('Servidor rodando em http://localhost:'+PORT)
