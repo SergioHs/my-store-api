@@ -13,7 +13,8 @@ export const getAllProducts = async (req: Request, res: Response) => {
 
 export const getProductsByName = async (req: Request, res: Response) => {    
     try {
-    const products = await Product.find({'title': { $regex: '.*' + req.params.name + '.*' } });
+        const products = await Product.find({'title': { $regex: new RegExp('.*' + req.params.name + '.*', "i") } });
+    
         console.log(products)
         res.status(200).json(products);
         

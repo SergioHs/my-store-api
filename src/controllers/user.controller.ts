@@ -27,10 +27,12 @@ export const createUser = async (req: Request, res: Response) => {
 
             req.body.user_image = user_image;
 
+            console.log(req.body.user_role);
+
             console.log("Req file:" + req.file)
             console.log("Imagem nome:" + user_image)
             console.log("Imagem:" + req.body.user_image)
-            
+
             const newUser = new User(req.body);
             const savedUser = await newUser.save();
 
